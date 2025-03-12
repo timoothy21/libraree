@@ -19,13 +19,14 @@ CREATE TABLE book (
 
 CREATE TABLE book_loans (
         id BIGINT AUTO_INCREMENT PRIMARY KEY,
-        userNIK VARCHAR(50) NOT NULL,
-        bookISBN VARCHAR(50) NOT NULL,
+        user VARCHAR(50) NOT NULL,
+        book VARCHAR(50) NOT NULL,
         borrowed_time DATETIME NOT NULL,
-        returned_time DATETIME DEFAULT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        actual_return_time DATETIME DEFAULT NULL,
+        created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        expected_return_time DATETIME DEFAULT NULL,
 
-        CONSTRAINT fk_book_loans_user FOREIGN KEY (userNIK) REFERENCES user (NIK) ON DELETE CASCADE,
-        CONSTRAINT fk_book_loans_book FOREIGN KEY (bookISBN) REFERENCES book (isbn) ON DELETE CASCADE
+        CONSTRAINT `fk_book_loans_book` FOREIGN KEY (`book`) REFERENCES `book` (`isbn`) ON DELETE CASCADE,
+        CONSTRAINT `fk_book_loans_user` FOREIGN KEY (`user`) REFERENCES `user` (`NIK`) ON DELETE CASCADE
 );

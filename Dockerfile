@@ -1,7 +1,5 @@
 FROM openjdk:21-jdk-slim
 
-RUN RUN apt-get update && apt-get install -yq tzdata && ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
-
 RUN rm -rf /app
 WORKDIR /app
 

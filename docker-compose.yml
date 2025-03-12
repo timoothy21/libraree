@@ -1,18 +1,17 @@
 version: '3.1'
 
 services:
-
   libraree-app:
     build: .
+    restart: always
     ports:
       - 3000:3000
+    networks:
+      - libraree-net
     environment:
-      - spring.datasource.url=jdbc:mysql://localhost:3306/libraree
+      - spring.datasource.url=jdbc:mysql://db:3306/libraree?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=libraree
-      - flyway.url=jdbc:mysql://localhost:3306/libraree
-      - flyway.user=root
-      - flyway.password=libraree
     depends_on:
       - db
 
@@ -23,13 +22,24 @@ services:
       MYSQL_ROOT_PASSWORD: libraree
     ports:
       - 3306:3306
-#        server: libraree-db-1
-#        username: root
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - libraree-net
 
   phpmyadmin:
     image: phpmyadmin
     restart: always
     ports:
       - 3307:80
-#    environment:
-#      - PMA_ARBITRARY=1
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - libraree-net
+
+volumes:
+  db_data:
+
+networks:
+  libraree-net:
