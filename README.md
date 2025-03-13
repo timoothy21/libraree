@@ -91,7 +91,7 @@ mvn spring-boot:run
 {
   "isbn": "9780135957059",
   "title": "The Pragmatic Programmer",
-  "stock": number
+  "stock": 1
 }
 ```
 
@@ -101,7 +101,7 @@ mvn spring-boot:run
 {
   "isbn": "9780135957059",
   "title": "The Pragmatic Programmer",
-  "stock": number
+  "stock": 1
 }
 ```
 
@@ -182,7 +182,7 @@ mvn spring-boot:run
 - `200 OK`: Success
 ```json
 {
-    "userName": "String",
+    "userName": "Timothy",
     "bookTitle": "The Pragmatic Programmer",
     "returnDate": "2025-03-25T23:59:59",
     "borrowedTime": "2025-03-13T11:32:34.870951",
