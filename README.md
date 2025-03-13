@@ -128,7 +128,7 @@ mvn spring-boot:run
         {
             "isbn": "9780135957059",
             "title": "The Pragmatic Programmer",
-            "stock": number
+            "stock": 1
         }
     ]
 }
