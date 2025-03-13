@@ -40,13 +40,19 @@ Ensure you have the following installed:
 ```
 
 ## Database Installation
-1. **Create Database (Local)**  
+**Create Database (Local)**  
    This Repository used MySQL, create new database for this project. </br>
+- username: root
+- password: libraree
 
-    - Execute query below:
-      ```sql
-      CREATE DATABASE libraree;
-      ```
+- Execute query below:
+  ```sql
+  CREATE DATABASE libraree;
+  ```
+
+DDL (Database Definition Language) script is stored in:
+```src/main/resources/db/migration/V1__InitialDatabase.sql```
+
 
 
 ## Configure the Database
